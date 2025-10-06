@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface SentimentSidebarProps {
   activeItem?: string;
@@ -75,5 +75,5 @@ export default function SentimentSidebar({
         )}
       </div>
     </div>
-  );
+  )
 }

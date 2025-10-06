@@ -1,6 +1,4 @@
-'use client';
-
-import React from 'react';
+'use client'
 
 const trendData = [
   { month: 'Jan', value: 2.3 },

@@ -1,7 +1,6 @@
-'use client';
+'use client'
 
-import React from 'react';
-import { Share2, Star } from 'lucide-react';
+import { Share2, Star } from 'lucide-react'
 
 interface OverallScoreCardProps {
   score?: number;

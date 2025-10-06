@@ -1,6 +1,5 @@
-'use client';
+'use client'
 
-import React from 'react';
 import { 
   Star, 
   PieChart, 
@@ -66,5 +65,5 @@ export default function AnalyticsNavigation() {
         </button>
       </div>
     </div>
-  );
+  )
 }

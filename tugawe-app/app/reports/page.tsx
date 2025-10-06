@@ -3,7 +3,10 @@
 import { useState } from 'react'
 import DashboardLayout from '@/components/DashboardLayout'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import CSATTrendChart from '@/components/CSATTrendChart'
+import ScoreDistributionChart from '@/components/ScoreDistributionChart'
+import MonthlyTrendChart from '@/components/MonthlyTrendChart'
+import KeyInsightsPanel from '@/components/KeyInsightsPanel'
+import OverallCSATCard from '@/components/OverallCSATCard'
 import CSATByCategoryChart from '@/components/CSATByCategoryChart'
 import OverallCSATScoreCard from '@/components/OverallCSATScoreCard'
 
@@ -80,19 +83,36 @@ export default function ReportsPage() {
         </div>
 
         {/* Main Content Area */}
-        <div className="flex-1 overflow-hidden">
-          {/* Score Distribution & Trend Over Time View */}
-          {(activeView === 'score-distribution' || activeView === 'trend-over-time') && (
-            <div className="bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl p-8 h-full">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
-                {/* CSAT Trend Chart - Takes 2 columns */}
-                <div className="lg:col-span-2">
-                  <CSATTrendChart />
+        <div className="flex-1 overflow-hidden flex flex-col min-h-0">
+          {/* Score Distribution View - Matching Mockup */}
+          {activeView === 'score-distribution' && (
+            <div className="bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-2xl p-8 h-full flex flex-col min-h-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-0">
+                {/* Score Distribution Chart - Left Side */}
+                <div className="flex flex-col min-h-0">
+                  <ScoreDistributionChart />
                 </div>
 
-                {/* Overall Score Card - Takes 1 column */}
-                <div className="lg:col-span-1">
-                  <OverallCSATScoreCard score={2.5} maxScore={5.0} percentage={55} />
+                {/* Overall CSAT Card - Right Side */}
+                <div className="flex flex-col min-h-0">
+                  <OverallCSATCard />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Trend Over Time View - Matching Mockup */}
+          {activeView === 'trend-over-time' && (
+            <div className="bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-2xl p-8 h-full flex flex-col min-h-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-0">
+                {/* Monthly Trend Chart - Left Side */}
+                <div className="flex flex-col min-h-0">
+                  <MonthlyTrendChart />
+                </div>
+
+                {/* Overall CSAT Card - Right Side */}
+                <div className="flex flex-col min-h-0">
+                  <OverallCSATCard />
                 </div>
               </div>
             </div>
@@ -100,15 +120,12 @@ export default function ReportsPage() {
 
           {/* CSAT by Category View */}
           {activeView === 'csat-by-category' && (
-            <div className="bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl p-8 h-full">
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full">
-                {/* CSAT by Category Chart */}
-                <div>
+            <div className="bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl p-8 h-full flex flex-col min-h-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-0">
+                <div className="flex flex-col min-h-0">
                   <CSATByCategoryChart />
                 </div>
-
-                {/* Overall CSAT Score Card */}
-                <div>
+                <div className="flex flex-col min-h-0">
                   <OverallCSATScoreCard score={2.5} maxScore={5.0} percentage={55} />
                 </div>
               </div>
@@ -117,16 +134,16 @@ export default function ReportsPage() {
 
           {/* Key Insights View */}
           {activeView === 'key-insights' && (
-            <div className="bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl p-8 h-full">
-              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
-                {/* CSAT Trend Chart */}
-                <div className="lg:col-span-2">
-                  <CSATTrendChart />
+            <div className="bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-2xl p-8 h-full flex flex-col min-h-0">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 h-full min-h-0">
+                {/* Key Insights Panel - Left Side */}
+                <div className="flex flex-col min-h-0">
+                  <KeyInsightsPanel />
                 </div>
 
-                {/* Overall Score Card */}
-                <div className="lg:col-span-1">
-                  <OverallCSATScoreCard score={2.5} maxScore={5.0} percentage={55} />
+                {/* Overall CSAT Card - Right Side */}
+                <div className="flex flex-col min-h-0">
+                  <OverallCSATCard />
                 </div>
               </div>
             </div>

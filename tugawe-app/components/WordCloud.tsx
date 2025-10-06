@@ -1,6 +1,4 @@
-'use client';
-
-import React from 'react';
+'use client'
 
 const words = [
   { text: 'Fresh', size: 'text-2xl' },

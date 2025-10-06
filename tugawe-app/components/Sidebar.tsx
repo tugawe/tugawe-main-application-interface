@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { useState } from 'react'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 interface SidebarProps {
   activeItem?: string;
@@ -72,5 +72,5 @@ export default function Sidebar({ activeItem = 'CSAT by category', onItemClick }
         )}
       </div>
     </div>
-  );
+  )
 }

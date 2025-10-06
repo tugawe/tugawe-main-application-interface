@@ -1,7 +1,7 @@
-'use client';
+'use client'
 
-import React, { ReactNode, useState } from 'react';
-import Image from 'next/image';
+import { ReactNode, useState } from 'react'
+import Image from 'next/image'
 
 interface AuthLayoutProps {
   children: ReactNode;
@@ -75,5 +75,5 @@ export default function AuthLayout({
         </div>
       </div>
     </div>
-  );
+  )
 }

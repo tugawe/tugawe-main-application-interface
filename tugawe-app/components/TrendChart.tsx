@@ -1,6 +1,4 @@
-'use client';
-
-import React from 'react';
+'use client'
 
 const trendData = [
   { week: 'Week 1', positive: 65, negative: 35 },
