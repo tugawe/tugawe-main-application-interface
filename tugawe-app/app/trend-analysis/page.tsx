@@ -1,28 +1,29 @@
 import DashboardLayout from '@/components/DashboardLayout'
-import AnalyticsSidebar from '@/components/AnalyticsSidebar'
+import AnalyticsLayout from '@/components/AnalyticsLayout'
+import GenericSidebar, { MenuItem } from '@/components/GenericSidebar'
 import TrendAnalysisTable from '@/components/TrendAnalysisTable'
 import WordCloudCard from '@/components/WordCloudCard'
+
+const menuItems: MenuItem[] = [
+  { id: 'frequency-ranking', label: 'Frequency ranking', href: '/analytics' },
+  { id: 'trend-analysis', label: 'Trend analysis', href: '/trend-analysis' },
+  { id: 'analysis-insight', label: 'Analysis insight', href: '/trend-analysis' },
+]
 
 export default function TrendAnalysisPage() {
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 p-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-[auto_1fr] gap-6 h-[calc(100vh-180px)]">
-            {/* Sidebar */}
-            <AnalyticsSidebar />
+      <AnalyticsLayout
+        sidebar={<GenericSidebar menuItems={menuItems} variant="glass" />}
+      >
+        <div className="grid grid-cols-2 gap-6 h-full">
+          {/* Trend Analysis Table */}
+          <TrendAnalysisTable />
 
-            {/* Main content */}
-            <div className="grid grid-cols-2 gap-6">
-              {/* Trend Analysis Table */}
-              <TrendAnalysisTable />
-
-              {/* Word Cloud */}
-              <WordCloudCard />
-            </div>
-          </div>
+          {/* Word Cloud */}
+          <WordCloudCard />
         </div>
-      </div>
+      </AnalyticsLayout>
     </DashboardLayout>
   )
 }

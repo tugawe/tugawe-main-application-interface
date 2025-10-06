@@ -1,7 +1,8 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { ArrowRight } from 'lucide-react'
 
 export default function BusinessDetailsForm() {
   const [formData, setFormData] = useState({
@@ -9,28 +10,30 @@ export default function BusinessDetailsForm() {
     branch: '',
     phone: '',
     email: '',
-  });
-  const [isLoading, setIsLoading] = useState(false);
+  })
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target
     setFormData(prev => ({
       ...prev,
       [name]: value,
-    }));
-  };
+    }))
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setIsLoading(true)
     
     // Simulate API call
     setTimeout(() => {
-      console.log('Business details:', formData);
-      setIsLoading(false);
-      // Navigate to next step
-    }, 1500);
-  };
+      console.log('Business details:', formData)
+      setIsLoading(false)
+      // Navigate to sign in page
+      router.push('/signin')
+    }, 1500)
+  }
 
   return (
     <div className="space-y-8">
@@ -132,5 +135,5 @@ export default function BusinessDetailsForm() {
         <p>Step 2 of 3</p>
       </div>
     </div>
-  );
+  )
 }

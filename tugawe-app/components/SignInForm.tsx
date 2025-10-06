@@ -1,23 +1,28 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { ArrowRight } from 'lucide-react';
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 
 export default function SignInForm() {
-  const [email, setEmail] = useState('');
-  const [otp, setOtp] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
+  const [email, setEmail] = useState('')
+  const [otp, setOtp] = useState('')
+  const [isLoading, setIsLoading] = useState(false)
+  const router = useRouter()
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsLoading(true);
+    e.preventDefault()
+    setIsLoading(true)
     
     // Simulate API call
     setTimeout(() => {
-      console.log('Sign in:', { email, otp });
-      setIsLoading(false);
-    }, 1500);
-  };
+      console.log('Sign in:', { email, otp })
+      setIsLoading(false)
+      // Navigate to dashboard after successful sign in
+      router.push('/dashboard')
+    }, 1500)
+  }
 
   return (
     <div className="space-y-8">
@@ -83,16 +88,16 @@ export default function SignInForm() {
       <div className="text-center text-sm text-gray-500 space-y-2">
         <p>
           Don&apos;t have an account?{' '}
-          <a href="/signup" className="text-blue-500 hover:underline">
+          <Link href="/" className="text-blue-500 hover:underline">
             Sign Up
-          </a>
+          </Link>
         </p>
         <p>
-          <a href="/forgot-password" className="text-blue-500 hover:underline">
+          <Link href="/" className="text-blue-500 hover:underline">
             Forgot Password?
-          </a>
+          </Link>
         </p>
       </div>
     </div>
-  );
+  )
 }

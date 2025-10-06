@@ -21,13 +21,13 @@ export default function HeroSection() {
       {/* CTA Buttons */}
       <div className="flex gap-4 pt-2">
         <Link
-          href="/signup"
+          href="/signin"
           className="px-6 py-2.5 bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium rounded-full transition-colors"
         >
-          Sign up
+          Get started
         </Link>
         <Link
-          href="/learn-more"
+          href="/onboarding"
           className="px-6 py-2.5 bg-white hover:bg-gray-50 text-gray-700 text-sm font-medium rounded-full border border-gray-300 transition-colors"
         >
           Learn more

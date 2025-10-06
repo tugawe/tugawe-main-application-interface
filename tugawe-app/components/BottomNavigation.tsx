@@ -1,69 +1,60 @@
-'use client';
+'use client'
 
-import React from 'react';
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { 
-  Star, 
-  PieChart, 
-  Share2, 
-  BarChart3, 
-  TrendingUp, 
-  Users, 
-  BookOpen, 
+  Star,
+  MessageSquare, 
+  Globe, 
+  User, 
+  FileText, 
+  Settings,
   Search,
-  ChevronLeft,
-  ChevronRight
-} from 'lucide-react';
+  LucideIcon
+} from 'lucide-react'
+
+interface NavItem {
+  href: string
+  label: string
+  icon: LucideIcon
+}
+
+const navItems: NavItem[] = [
+  { href: '/dashboard', label: 'Favorite', icon: Star },
+  { href: '/trend-analysis', label: 'Trending Words', icon: MessageSquare },
+  { href: '/sentiment', label: 'Language', icon: Globe },
+  { href: '/account', label: 'Profile', icon: User },
+  { href: '/reports', label: 'Reports', icon: FileText },
+  { href: '/settings', label: 'Settings', icon: Settings },
+  { href: '/search', label: 'Search', icon: Search },
+]
 
 export default function BottomNavigation() {
-  const navigationItems = [
-    { icon: Star, label: 'Customer Satisfaction Score', active: true },
-    { icon: PieChart, label: 'Analytics' },
-    { icon: Share2, label: 'Share' },
-    { icon: BarChart3, label: 'Reports' },
-    { icon: TrendingUp, label: 'Trends' },
-    { icon: Users, label: 'Users' },
-    { icon: BookOpen, label: 'Documentation' },
-    { icon: Search, label: 'Search' },
-  ];
+  const pathname = usePathname()
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 px-6 py-4">
-      <div className="flex items-center justify-between max-w-7xl mx-auto">
-        {/* Left Arrow */}
-        <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-          <ChevronLeft className="w-5 h-5 text-gray-600" />
-        </button>
+    <div className="fixed bottom-0 left-0 right-0 bg-white border-t border-gray-200 md:hidden z-50">
+      <nav className="flex justify-around items-center h-16">
+        {navItems.map((item) => {
+          const Icon = item.icon
+          const isActive = pathname === item.href
 
-        {/* Navigation Items */}
-        <div className="flex items-center gap-6 overflow-x-auto">
-          {navigationItems.map((item, index) => {
-            const Icon = item.icon;
-            return (
-              <button
-                key={index}
-                className={`flex flex-col items-center gap-1 px-3 py-2 rounded-lg transition-colors ${
-                  item.active
-                    ? 'text-blue-600'
-                    : 'text-gray-600 hover:text-gray-900'
-                }`}
-                title={item.label}
-              >
-                <Icon className="w-5 h-5" />
-                {item.active && (
-                  <span className="text-xs whitespace-nowrap hidden md:block">
-                    {item.label}
-                  </span>
-                )}
-              </button>
-            );
-          })}
-        </div>
-
-        {/* Right Arrow */}
-        <button className="p-2 hover:bg-gray-100 rounded-full transition-colors">
-          <ChevronRight className="w-5 h-5 text-gray-600" />
-        </button>
-      </div>
+          return (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={`flex flex-col items-center justify-center flex-1 h-full transition-colors ${
+                isActive
+                  ? 'text-blue-600'
+                  : 'text-gray-500 hover:text-gray-700'
+              }`}
+            >
+              <Icon size={20} className="mb-1" />
+              <span className="text-xs">{item.label}</span>
+            </Link>
+          )
+        })}
+      </nav>
     </div>
-  );
+  )
 }

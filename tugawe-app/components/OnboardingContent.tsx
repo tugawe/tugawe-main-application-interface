@@ -1,11 +1,12 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
-import { Check, ArrowRight } from 'lucide-react';
+import { useState } from 'react'
+import { useRouter } from 'next/navigation'
+import { Check, ArrowRight } from 'lucide-react'
 
 interface Feature {
-  title: string;
-  description: string;
+  title: string
+  description: string
 }
 
 const features: Feature[] = [
@@ -21,10 +22,16 @@ const features: Feature[] = [
     title: 'Access to your own pre-order menu and reservation system',
     description: '',
   },
-];
+]
 
 export default function OnboardingContent() {
-  const [activeTab, setActiveTab] = useState('eatery');
+  const [activeTab, setActiveTab] = useState('eatery')
+  const router = useRouter()
+
+  const handleNext = () => {
+    // Navigate to business details form
+    router.push('/business-details')
+  }
 
   return (
     <div className="space-y-12">
@@ -103,6 +110,7 @@ export default function OnboardingContent() {
 
         {/* Next Button */}
         <button
+          onClick={handleNext}
           className="group flex items-center justify-center w-12 h-12 rounded-full border-2 border-blue-500 text-blue-500 hover:bg-blue-500 hover:text-white transition-all duration-300"
           aria-label="Next"
         >
@@ -110,5 +118,5 @@ export default function OnboardingContent() {
         </button>
       </div>
     </div>
-  );
+  )
 }

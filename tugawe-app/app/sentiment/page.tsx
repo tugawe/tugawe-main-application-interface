@@ -1,19 +1,23 @@
-import DashboardLayout from '@/components/DashboardLayout';
-import SentimentSidebar from '@/components/SentimentSidebar';
-import TrendChart from '@/components/TrendChart';
-import SentimentChart from '@/components/SentimentChart';
-import AnalyticsNavigation from '@/components/AnalyticsNavigation';
+import DashboardLayout from '@/components/DashboardLayout'
+import AnalyticsLayout from '@/components/AnalyticsLayout'
+import GenericSidebar, { MenuItem } from '@/components/GenericSidebar'
+import TrendChart from '@/components/TrendChart'
+import SentimentChart from '@/components/SentimentChart'
+
+const menuItems: MenuItem[] = [
+  { id: 'trend-over-time', label: 'Trend over time', href: '/sentiment' },
+  { id: 'sentiment-by-category', label: 'Sentiment by category', href: '/sentiment' },
+  { id: 'reviews-by-sentiment', label: 'Reviews by sentiment', href: '/sentiment' },
+  { id: 'sentiment-insights', label: 'Sentiment insights', href: '/sentiment' },
+]
 
 export default function SentimentAnalysisPage() {
   return (
     <DashboardLayout>
-      {/* Main Sentiment Analysis Content */}
-      <div className="flex gap-6 pb-24">
-        {/* Sidebar */}
-        <SentimentSidebar />
-
-        {/* Main Content Area */}
-        <div className="flex-1 bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl p-8">
+      <AnalyticsLayout
+        sidebar={<GenericSidebar menuItems={menuItems} variant="gradient" />}
+      >
+        <div className="bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 rounded-2xl p-8 h-full">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 h-full">
             {/* Trend Chart - Takes 2 columns */}
             <div className="lg:col-span-2">
@@ -26,10 +30,7 @@ export default function SentimentAnalysisPage() {
             </div>
           </div>
         </div>
-      </div>
-
-      {/* Bottom Navigation */}
-      <AnalyticsNavigation />
+      </AnalyticsLayout>
     </DashboardLayout>
-  );
+  )
 }

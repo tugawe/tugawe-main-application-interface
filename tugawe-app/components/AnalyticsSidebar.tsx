@@ -22,7 +22,7 @@ export default function AnalyticsSidebar({
 
   return (
     <div 
-      className={`bg-gradient-to-br from-blue-500 to-blue-600 text-white transition-all duration-300 rounded-2xl p-6 ${
+      className={`bg-gradient-to-br from-blue-500 via-blue-600 to-blue-700 text-white transition-all duration-300 rounded-2xl p-6 ${
         isExpanded ? 'w-64' : 'w-20'
       }`}
     >
@@ -63,10 +63,13 @@ export default function AnalyticsSidebar({
           ))}
         </nav>
 
-        {/* Expand Label */}
+        {/* Expand Label at Bottom */}
         {isExpanded && (
-          <div className="mt-auto pt-4 border-t border-white/20">
-            <button className="flex items-center gap-2 text-sm hover:text-white/80 transition-colors">
+          <div className="mt-auto pt-6 border-t border-white/20">
+            <button 
+              onClick={() => setIsExpanded(false)}
+              className="flex items-center gap-2 text-sm text-white/70 hover:text-white transition-colors"
+            >
               <ChevronLeft className="w-4 h-4" />
               <span>expand</span>
             </button>

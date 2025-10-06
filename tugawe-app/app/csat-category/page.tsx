@@ -1,25 +1,30 @@
 import DashboardLayout from '@/components/DashboardLayout'
-import CSATAnalysisSidebar from '@/components/CSATAnalysisSidebar'
+import AnalyticsLayout from '@/components/AnalyticsLayout'
+import GenericSidebar, { MenuItem } from '@/components/GenericSidebar'
 import CSATByCategoryChart from '@/components/CSATByCategoryChart'
 import OverallCSATScoreCard from '@/components/OverallCSATScoreCard'
+
+const menuItems: MenuItem[] = [
+  { id: 'score-distribution', label: 'Score distribution', href: '/csat' },
+  { id: 'trend-over-time', label: 'Trend over time', href: '/csat' },
+  { id: 'csat-by-category', label: 'CSAT by category', href: '/csat-category' },
+  { id: 'key-insights', label: 'Key insights', href: '/csat-category' },
+]
 
 export default function CSATCategoryPage() {
   return (
     <DashboardLayout>
-      <div className="min-h-screen bg-gradient-to-br from-blue-600 via-blue-500 to-blue-400 p-6">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-[auto_2fr_1fr] gap-6 h-[calc(100vh-180px)]">
-            {/* Sidebar */}
-            <CSATAnalysisSidebar />
+      <AnalyticsLayout
+        sidebar={<GenericSidebar menuItems={menuItems} variant="glass" />}
+      >
+        <div className="grid grid-cols-2 gap-6 h-full">
+          {/* CSAT by Category Chart */}
+          <CSATByCategoryChart />
 
-            {/* CSAT by Category Chart */}
-            <CSATByCategoryChart />
-
-            {/* Overall CSAT Score Card */}
-            <OverallCSATScoreCard />
-          </div>
+          {/* Overall CSAT Score Card */}
+          <OverallCSATScoreCard />
         </div>
-      </div>
+      </AnalyticsLayout>
     </DashboardLayout>
   )
 }
