@@ -100,7 +100,7 @@ export default function MonthlyTrendChart({ data, maxValue = 5.0 }: MonthlyTrend
               d={createSmoothPath(dataPoints)}
               fill="none"
               stroke="rgba(255, 255, 255, 0.9)"
-              strokeWidth="3"
+              strokeWidth="1.5"
               strokeLinecap="round"
               strokeLinejoin="round"
             />
@@ -114,10 +114,10 @@ export default function MonthlyTrendChart({ data, maxValue = 5.0 }: MonthlyTrend
                   key={index}
                   cx={x}
                   cy={y}
-                  r="4"
+                  r="3"
                   fill="rgba(255, 255, 255, 0.9)"
                   stroke="rgba(147, 197, 253, 0.5)"
-                  strokeWidth="2"
+                  strokeWidth="1.5"
                 />
               )
             })}

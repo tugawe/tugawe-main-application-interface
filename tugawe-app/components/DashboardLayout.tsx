@@ -4,6 +4,7 @@ import { ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import BottomNavigation from './BottomNavigation'
+import UserProfileDropdown from './UserProfileDropdown'
 
 interface DashboardLayoutProps {
   children: ReactNode
@@ -43,11 +44,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
           </nav>
 
           {/* User Profile */}
-          <Link href="/business-details" className="flex items-center gap-3 hover:opacity-80 transition-opacity">
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-orange-400 to-pink-500 flex items-center justify-center">
-              <span className="text-white text-sm font-semibold">U</span>
-            </div>
-          </Link>
+          <UserProfileDropdown />
         </div>
       </header>
 

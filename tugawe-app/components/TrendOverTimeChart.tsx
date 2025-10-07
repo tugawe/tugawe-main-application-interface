@@ -101,7 +101,7 @@ export default function TrendOverTimeChart({ weeks: weeksProp, trendLines: trend
                   d={createSmoothPath(line.data)}
                   fill="none"
                   stroke={line.color}
-                  strokeWidth="2.5"
+                  strokeWidth="1.5"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
@@ -111,7 +111,7 @@ export default function TrendOverTimeChart({ weeks: weeksProp, trendLines: trend
                     key={`p${lineIndex}-${index}`}
                     cx={index * (360 / (line.data.length - 1))}
                     cy={180 - (value / 100) * 180}
-                    r="3"
+                    r="2.5"
                     fill={line.color.replace('0.8', '0.9')}
                   />
                 ))}

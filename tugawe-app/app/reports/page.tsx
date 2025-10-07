@@ -9,12 +9,15 @@ import KeyInsightsPanel from '@/components/KeyInsightsPanel'
 import OverallCSATCard from '@/components/OverallCSATCard'
 import CSATByCategoryChart from '@/components/CSATByCategoryChart'
 import OverallCSATScoreCard from '@/components/OverallCSATScoreCard'
+import TrendChart from '@/components/TrendChart'
+import SentimentChart from '@/components/SentimentChart'
 
 const menuItems = [
   { id: 'score-distribution', label: 'Score distribution' },
   { id: 'trend-over-time', label: 'Trend over time' },
   { id: 'csat-by-category', label: 'CSAT by category' },
   { id: 'key-insights', label: 'Key insights' },
+  { id: 'sentiment', label: 'Sentiment' },
 ]
 
 export default function ReportsPage() {
@@ -144,6 +147,23 @@ export default function ReportsPage() {
                 {/* Overall CSAT Card - Right Side */}
                 <div className="flex flex-col min-h-0">
                   <OverallCSATCard />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Sentiment View */}
+          {activeView === 'sentiment' && (
+            <div className="bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600 rounded-2xl p-8 h-full flex flex-col min-h-0">
+              <div className="grid grid-cols-1 lg:grid-cols-[1.5fr_1fr] gap-6 h-full min-h-0">
+                {/* Trend Chart - Left Side (Wider) */}
+                <div className="flex flex-col min-h-0">
+                  <TrendChart />
+                </div>
+
+                {/* Sentiment Distribution Chart - Right Side */}
+                <div className="flex flex-col min-h-0">
+                  <SentimentChart />
                 </div>
               </div>
             </div>
