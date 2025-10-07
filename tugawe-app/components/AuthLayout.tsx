@@ -50,22 +50,6 @@ export default function AuthLayout({
             </div>
           )}
         </div>
-
-        {/* Content Overlay */}
-        <div className="relative z-10 flex items-end p-12">
-          <div className="text-white space-y-3">
-            <div className="flex items-center gap-2 text-sm opacity-90">
-              <div className="w-8 h-px bg-white"></div>
-              <span className="uppercase tracking-wider">Premium Dining Experience</span>
-            </div>
-            <h2 className="text-4xl font-light leading-tight">
-              Savor Every<br />Moment
-            </h2>
-            <p className="text-blue-50 text-sm max-w-xs leading-relaxed">
-              Where exceptional cuisine meets breathtaking views
-            </p>
-          </div>
-        </div>
       </div>
 
       {/* Right Side - Content */}
